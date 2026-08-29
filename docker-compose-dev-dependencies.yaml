@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: postgres17_development_financial_manager
+    environment:
+      POSTGRES_DB: financial-manager-development-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres17_development_financial_manager_data:/var/lib/postgresql/data
+
+volumes:
+  postgres17_development_financial_manager_data:

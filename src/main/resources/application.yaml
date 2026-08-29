@@ -1,3 +1,32 @@
 spring:
   application:
     name: financial.manager
+
+  profiles:
+    active: ${RUN_ENVIRONMENT:development}
+
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/financial-manager-development-db}
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:postgres}
+
+  jpa:
+    database: POSTGRESQL
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+  forward-headers-strategy: framework
+
+springdoc:
+  api-docs:
+    enabled: true
+
+#cors:
+#  configuration:
+#    allowed-hosts: ${ALLOWED_HOSTS:http://localhost:8080,http://localhost:8081,http://localhost:25565}
